@@ -30,8 +30,6 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
 		
 		setup()
 		
-		viewModel.getMovies { movies in
-		}
 	}
 	
 	override func viewDidLayoutSubviews() {
@@ -44,14 +42,16 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
 	}
 	
 	func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-		return 30
+		return viewModel.getMovies().count
 	}
 	
 	func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
 		let cell = collectionView.dequeueReusableCell(
 			withReuseIdentifier: MovieCollectionViewCell.identifier,
 			for: indexPath
-		)
+		) as! MovieCollectionViewCell
+		
+		cell.movie = viewModel.getMovies()[indexPath.item]
 		
 		return cell
 	}

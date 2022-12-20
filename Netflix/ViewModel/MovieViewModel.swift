@@ -10,7 +10,17 @@ import Foundation
 class MovieViewModel {
 	var repository = MovieRepositoryMock()
 	
-	func getMovies(completion: @escaping ([Movie]) -> ()) {
-		repository.populate(completion: completion)
+	private var movies: [Movie] = []
+	
+	init() {
+		repository.populate { movies in
+			movies.forEach { movie in
+				self.movies.append(movie)
+			}
+		}
+	}
+	
+	func getMovies() -> [Movie] {
+		return movies
 	}
 }

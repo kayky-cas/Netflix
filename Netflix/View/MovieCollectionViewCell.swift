@@ -12,7 +12,8 @@ class MovieCollectionViewCell: UICollectionViewCell {
 	
 	var movie: Movie? {
 		didSet {
-			// TODO
+			details.text = movie?.title
+			duration.text = "\(Int(movie!.duration / 60)) min"
 		}
 	}
 	
@@ -33,10 +34,25 @@ class MovieCollectionViewCell: UICollectionViewCell {
 		return view
 	}()
 	
+	lazy var duration = {
+		let label = UILabel()
+		label.textAlignment = .right
+		label.textColor = .white
+		label.font = UIFont.italicSystemFont(ofSize: 18)
+		label.shadowColor = .black
+		label.shadowOffset = .init(width: 1, height: 1)
+		return label
+	}()
+	
 	lazy var details = {
 		let label = UILabel()
 		// TODO (TITLE) <- center -> (DURATION) min
 		label.text = "Jorge"
+		label.numberOfLines = 2
+		label.textColor = .white
+		label.font = UIFont.boldSystemFont(ofSize: 18)
+		label.shadowColor = .black
+		label.shadowOffset = .init(width: -1, height: 1)
 		return label
 	}()
 	
@@ -60,8 +76,10 @@ class MovieCollectionViewCell: UICollectionViewCell {
 	}
 	
 	func setup() {
-		contentView.addSubviews(image, details)
-		contentView.backgroundColor = .cyan
+		contentView.addSubviews(image, details, duration)
+		contentView.backgroundColor = .gray
+		contentView.layer.cornerRadius = 10
+		contentView.layer.masksToBounds = true
 	}
 	
 	func setupConstraints() {
@@ -70,15 +88,25 @@ class MovieCollectionViewCell: UICollectionViewCell {
 			leading: contentView.leadingAnchor,
 			bottom: nil,
 			trailing: contentView.trailingAnchor,
-			size: .init(width: contentView.frame.width, height: contentView.frame.height - 20)
+			size: .init(width: contentView.frame.width, height: contentView.frame.height)
+		)
+		
+		duration.anchor(
+			top: contentView.topAnchor,
+			leading: contentView.leadingAnchor,
+			bottom: nil,
+			trailing: contentView.trailingAnchor,
+			padding: .init(top: 5, left: 0, bottom: 0, right: 5),
+			size: .init(width: contentView.frame.width, height: 20)
 		)
 		
 		details.anchor(
-			top: image.bottomAnchor,
+			top: nil,
 			leading: contentView.leadingAnchor,
 			bottom: contentView.bottomAnchor,
 			trailing: contentView.trailingAnchor,
-			size: .init(width: contentView.frame.width, height: 20)
+			padding: .init(top: 0, left: 5, bottom: 5, right: 5),
+			size: .init(width: contentView.frame.width, height: 50)
 		)
 	}
 }
