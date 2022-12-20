@@ -8,7 +8,7 @@
 import Foundation
 
 class MovieRepositoryMock {
-	private func populate(completion: @escaping ([Movie]) -> ()) {
+	func populate(completion: @escaping ([Movie]) -> ()) {
 		let titles = [
 			"Um sonho de Liberdade ",
 			"O Poderoso Chefão ",
