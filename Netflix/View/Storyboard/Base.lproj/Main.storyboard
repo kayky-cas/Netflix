@@ -15,30 +15,9 @@
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2bb-G7-enw">
-                                <rect key="frame" x="16" y="59" width="361" height="759"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="361" id="Sxu-oD-KFT"/>
-                                    <constraint firstAttribute="height" constant="759" id="bwd-9o-Ow1"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                        </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                        <constraints>
-                            <constraint firstItem="2bb-G7-enw" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" id="1sN-Iq-hZD"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="2bb-G7-enw" secondAttribute="trailing" constant="16" id="Yjc-0v-VJI"/>
-                            <constraint firstItem="2bb-G7-enw" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="16" id="np9-Ir-Mt2"/>
-                            <constraint firstItem="2bb-G7-enw" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="ul9-rj-rzo"/>
-                        </constraints>
                     </view>
-                    <connections>
-                        <outlet property="movieList" destination="2bb-G7-enw" id="Tnk-Cq-idu"/>
-                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>

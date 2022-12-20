@@ -13,12 +13,15 @@ struct Movie {
 	var description: String?
 	var duration: TimeInterval
 	var exhibitions: UInt
+	var imageUrl: String?
 	
-	init(title: String, duration: TimeInterval, exhibitions: UInt, description: String? = nil) {
+	init(title: String, description: String? = nil, duration: TimeInterval, exhibitions: UInt, imageUrl: String? = nil) {
 		id = .init()
+		
 		self.title = title
 		self.description = description
 		self.duration = duration
 		self.exhibitions = exhibitions
+		self.imageUrl = imageUrl
 	}
 }
