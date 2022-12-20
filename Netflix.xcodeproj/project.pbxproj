@@ -13,6 +13,7 @@
 		4D6F2FEC2951F148007EBDD1 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4D6F2FEA2951F148007EBDD1 /* Main.storyboard */; };
 		4D6F2FEE2951F149007EBDD1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4D6F2FED2951F149007EBDD1 /* Assets.xcassets */; };
 		4D6F2FF12951F149007EBDD1 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4D6F2FEF2951F149007EBDD1 /* LaunchScreen.storyboard */; };
+		4D6F2FFC2951F27E007EBDD1 /* Movie.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D6F2FFB2951F27E007EBDD1 /* Movie.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +25,7 @@
 		4D6F2FED2951F149007EBDD1 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		4D6F2FF02951F149007EBDD1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		4D6F2FF22951F149007EBDD1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		4D6F2FFB2951F27E007EBDD1 /* Movie.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Movie.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,15 +58,72 @@
 		4D6F2FE32951F148007EBDD1 /* Netflix */ = {
 			isa = PBXGroup;
 			children = (
-				4D6F2FE42951F148007EBDD1 /* AppDelegate.swift */,
-				4D6F2FE62951F148007EBDD1 /* SceneDelegate.swift */,
-				4D6F2FE82951F148007EBDD1 /* ViewController.swift */,
-				4D6F2FEA2951F148007EBDD1 /* Main.storyboard */,
-				4D6F2FED2951F149007EBDD1 /* Assets.xcassets */,
-				4D6F2FEF2951F149007EBDD1 /* LaunchScreen.storyboard */,
+				4DEDB9C12951F52E00DB93D4 /* ViewModel */,
+				4DEDB9BF2951F50900DB93D4 /* Resource */,
+				4D6F2FFA2951F24F007EBDD1 /* Model */,
+				4D6F2FF92951F20A007EBDD1 /* View */,
+				4D6F2FF82951F1F7007EBDD1 /* Delegate */,
 				4D6F2FF22951F149007EBDD1 /* Info.plist */,
 			);
 			path = Netflix;
+			sourceTree = "<group>";
+		};
+		4D6F2FF82951F1F7007EBDD1 /* Delegate */ = {
+			isa = PBXGroup;
+			children = (
+				4D6F2FE42951F148007EBDD1 /* AppDelegate.swift */,
+				4D6F2FE62951F148007EBDD1 /* SceneDelegate.swift */,
+			);
+			path = Delegate;
+			sourceTree = "<group>";
+		};
+		4D6F2FF92951F20A007EBDD1 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				4DEDB9C02951F51E00DB93D4 /* Controller */,
+				4DEDB9BE2951F4E500DB93D4 /* Storyboard */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		4D6F2FFA2951F24F007EBDD1 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				4D6F2FFB2951F27E007EBDD1 /* Movie.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		4DEDB9BE2951F4E500DB93D4 /* Storyboard */ = {
+			isa = PBXGroup;
+			children = (
+				4D6F2FEA2951F148007EBDD1 /* Main.storyboard */,
+				4D6F2FEF2951F149007EBDD1 /* LaunchScreen.storyboard */,
+			);
+			path = Storyboard;
+			sourceTree = "<group>";
+		};
+		4DEDB9BF2951F50900DB93D4 /* Resource */ = {
+			isa = PBXGroup;
+			children = (
+				4D6F2FED2951F149007EBDD1 /* Assets.xcassets */,
+			);
+			path = Resource;
+			sourceTree = "<group>";
+		};
+		4DEDB9C02951F51E00DB93D4 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				4D6F2FE82951F148007EBDD1 /* ViewController.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		4DEDB9C12951F52E00DB93D4 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ViewModel;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -140,6 +199,7 @@
 			files = (
 				4D6F2FE92951F148007EBDD1 /* ViewController.swift in Sources */,
 				4D6F2FE52951F148007EBDD1 /* AppDelegate.swift in Sources */,
+				4D6F2FFC2951F27E007EBDD1 /* Movie.swift in Sources */,
 				4D6F2FE72951F148007EBDD1 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
