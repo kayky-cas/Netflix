@@ -10,7 +10,7 @@ import Foundation
 class MovieRepositoryMock {
 	func populate(completion: @escaping ([Movie]) -> ()) {
 		let titles = [
-			"Um sonho de Liberdade ",
+			"Um sonho de Liberdade",
 			"O Poderoso Chefão ",
 			"O Poderoso Chefão II",
 			"Batman - O Cavaleiro das Trevas",
@@ -41,7 +41,6 @@ class MovieRepositoryMock {
 	
 	private func getRandomMovieStats(_ title: String) -> Movie {
 		let HOUR = 3600
-		
 		return Movie(title: title, duration: TimeInterval(Int.random(in: HOUR..<HOUR * 4)), exhibitions: UInt.random(in: 1000..<1000000))
 	}
 }

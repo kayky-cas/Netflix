@@ -14,6 +14,10 @@ class MovieCollectionViewCell: UICollectionViewCell {
 		didSet {
 			details.text = movie?.title
 			duration.text = "\(Int(movie!.duration / 60)) min"
+			
+			if let imageUrl = movie!.imageUrl {
+				image.load(url: URL(string: imageUrl)!)
+			}
 		}
 	}
 	
@@ -24,8 +28,8 @@ class MovieCollectionViewCell: UICollectionViewCell {
 		// - async image load
 		// - create an Custom image view??????
 		image.image = UIImage(named: "nil-image")
-		image.contentMode = .scaleAspectFit
-		image.clipsToBounds = true
+		image.contentMode = .scaleAspectFill
+//		image.clipsToBounds = true
 		return image
 	}()
 	
@@ -51,7 +55,7 @@ class MovieCollectionViewCell: UICollectionViewCell {
 		label.numberOfLines = 2
 		label.textColor = .white
 		label.font = UIFont.boldSystemFont(ofSize: 18)
-		label.shadowColor = .black
+		label.shadowColor = .init(_colorLiteralRed: 0, green: 0, blue: 0, alpha: 0.8)
 		label.shadowOffset = .init(width: -1, height: 1)
 		return label
 	}()
@@ -80,6 +84,8 @@ class MovieCollectionViewCell: UICollectionViewCell {
 		contentView.backgroundColor = .gray
 		contentView.layer.cornerRadius = 10
 		contentView.layer.masksToBounds = true
+		contentView.layer.borderWidth = 1
+		contentView.layer.borderColor = UIColor.red.cgColor
 	}
 	
 	func setupConstraints() {
@@ -108,5 +114,19 @@ class MovieCollectionViewCell: UICollectionViewCell {
 			padding: .init(top: 0, left: 5, bottom: 5, right: 5),
 			size: .init(width: contentView.frame.width, height: 50)
 		)
+	}
+}
+
+extension UIImageView {
+	func load(url: URL) {
+		DispatchQueue.global().async { [weak self] in
+			if let data = try? Data(contentsOf: url) {
+				if let image = UIImage(data: data) {
+					DispatchQueue.main.async {
+						self?.image = image
+					}
+				}
+			}
+		}
 	}
 }
