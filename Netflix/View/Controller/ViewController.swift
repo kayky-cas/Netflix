@@ -42,7 +42,6 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
 	
 	override func viewDidLoad() {
 		super.viewDidLoad()
-		// Do any additional setup after loading the view.
 		
 		collectionView.register(
 			MovieCollectionViewCell.self,
@@ -57,7 +56,23 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
 	
 	override func viewDidLayoutSubviews() {
 		super.viewDidLayoutSubviews()
+		setupConstraints()
+	}
+	
+	func setup() {
+		view.addSubviews(topCircle, bottomCircle, collectionView)
 		
+		view.backgroundColor = .black
+		
+		collectionView.backgroundColor = .init(
+			red: 40 / 255,
+			green: 40 / 255,
+			blue: 40 / 255,
+			alpha: 0
+		)
+	}
+		
+	func setupConstraints() {
 		topCircle.anchor(
 			top: view.topAnchor,
 			leading: nil,
@@ -78,20 +93,7 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
 		
 		collectionView.frame = view.bounds
 	}
-	
-	func setup() {
-		view.addSubviews(topCircle, bottomCircle, collectionView)
-		
-		view.backgroundColor = .black
-		
-		collectionView.backgroundColor = .init(
-			red: 40 / 255,
-			green: 40 / 255,
-			blue: 40 / 255,
-			alpha: 0
-		)
-	}
-	
+
 	func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
 		return viewModel.getMovies().count
 	}

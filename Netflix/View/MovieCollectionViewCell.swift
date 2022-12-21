@@ -82,6 +82,7 @@ class MovieCollectionViewCell: UICollectionViewCell {
 	
 	override func layoutSubviews() {
 		super.layoutSubviews()
+		setupCell()
 		setupConstraints()
 	}
 	
@@ -91,6 +92,9 @@ class MovieCollectionViewCell: UICollectionViewCell {
 	
 	func setup() {
 		contentView.addSubviews(image, titleContainer, title, duration)
+	}
+	
+	func setupCell() {
 		contentView.backgroundColor = .gray
 		contentView.layer.cornerRadius = 10
 		contentView.layer.masksToBounds = true
