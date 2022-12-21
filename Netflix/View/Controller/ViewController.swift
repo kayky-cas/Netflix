@@ -25,6 +25,16 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
 		"https://www.elhombre.com.br/wp-content/uploads/2021/06/forrest-gump-1.jpg"
 	]
 	
+	private let topCircle = {
+		let circle = Circle()
+		return circle
+	}()
+	
+	private let bottomCircle = {
+		let circle = Circle()
+		return circle
+	}()
+	
 	private let collectionView = UICollectionView(
 		frame: .zero,
 		collectionViewLayout: UICollectionViewFlowLayout()
@@ -47,17 +57,38 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
 	
 	override func viewDidLayoutSubviews() {
 		super.viewDidLayoutSubviews()
+		
+		topCircle.anchor(
+			top: view.topAnchor,
+			leading: nil,
+			bottom: nil,
+			trailing: view.trailingAnchor,
+			padding: .init(top: -300, left: 0, bottom: 0, right: -250),
+			size: .init(width: 500, height: 500)
+		)
+		
+		bottomCircle.anchor(
+			top: nil,
+			leading: view.leadingAnchor,
+			bottom: view.bottomAnchor,
+			trailing: nil,
+			padding: .init(top: 0, left: -250, bottom: -300, right: 0),
+			size: .init(width: 500, height: 500)
+		)
+		
 		collectionView.frame = view.bounds
 	}
 	
 	func setup() {
-		view.addSubviews(collectionView)
+		view.addSubviews(topCircle, bottomCircle, collectionView)
+		
+		view.backgroundColor = .black
 		
 		collectionView.backgroundColor = .init(
 			red: 40 / 255,
 			green: 40 / 255,
 			blue: 40 / 255,
-			alpha: 1
+			alpha: 0
 		)
 	}
 	
@@ -81,7 +112,7 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
 	}
 	
 	func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-		let width = view.frame.width / 3 - 10
+		let width = view.frame.width / 3 - 11
 		return CGSize(width: width, height: width * 1.6)
 	}
 	

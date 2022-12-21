@@ -12,7 +12,7 @@ class MovieCollectionViewCell: UICollectionViewCell {
 	
 	var movie: Movie? {
 		didSet {
-			details.text = movie?.title
+			title.text = movie?.title
 			duration.text = "\(Int(movie!.duration / 60)) min"
 			
 			if let imageUrl = movie!.imageUrl {
@@ -33,22 +33,32 @@ class MovieCollectionViewCell: UICollectionViewCell {
 		return image
 	}()
 	
-	lazy var container = {
-		let view = UIView()
+	lazy var titleContainer = {
+		let view = UIVisualEffectView(effect: nil)
+		view.translatesAutoresizingMaskIntoConstraints = false
+		view.effect = UIBlurEffect(style: .systemThinMaterialDark)
+		view.backgroundColor = .clear
+		
 		return view
 	}()
 	
 	lazy var duration = {
 		let label = UILabel()
-		label.textAlignment = .right
+		label.textAlignment = .center
 		label.textColor = .white
 		label.font = UIFont.italicSystemFont(ofSize: 18)
 		label.shadowColor = .black
 		label.shadowOffset = .init(width: 1, height: 1)
+		label.backgroundColor = .systemPink
+		label.layer.cornerRadius = 5
+		label.layer.masksToBounds = true
+		label.layer.shadowColor = UIColor.black.cgColor
+		label.layer.shadowOffset = .init(width: 2, height: 2)
+		label.layer.shadowOpacity = 1
 		return label
 	}()
 	
-	lazy var details = {
+	lazy var title = {
 		let label = UILabel()
 		// TODO (TITLE) <- center -> (DURATION) min
 		label.text = "Jorge"
@@ -80,12 +90,12 @@ class MovieCollectionViewCell: UICollectionViewCell {
 	}
 	
 	func setup() {
-		contentView.addSubviews(image, details, duration)
+		contentView.addSubviews(image, titleContainer, title, duration)
 		contentView.backgroundColor = .gray
 		contentView.layer.cornerRadius = 10
 		contentView.layer.masksToBounds = true
-		contentView.layer.borderWidth = 1
-		contentView.layer.borderColor = UIColor.red.cgColor
+		contentView.layer.borderWidth = 2
+		contentView.layer.borderColor = UIColor.systemPink.cgColor
 	}
 	
 	func setupConstraints() {
@@ -99,20 +109,28 @@ class MovieCollectionViewCell: UICollectionViewCell {
 		
 		duration.anchor(
 			top: contentView.topAnchor,
-			leading: contentView.leadingAnchor,
+			leading: nil,
 			bottom: nil,
 			trailing: contentView.trailingAnchor,
 			padding: .init(top: 5, left: 0, bottom: 0, right: 5),
-			size: .init(width: contentView.frame.width, height: 20)
+			size: .init(width: 80, height: 25)
 		)
 		
-		details.anchor(
+		titleContainer.anchor(
 			top: nil,
 			leading: contentView.leadingAnchor,
 			bottom: contentView.bottomAnchor,
 			trailing: contentView.trailingAnchor,
-			padding: .init(top: 0, left: 5, bottom: 5, right: 5),
 			size: .init(width: contentView.frame.width, height: 50)
+		)
+		
+		title.anchor(
+			top: nil,
+			leading: titleContainer.leadingAnchor,
+			bottom: titleContainer.bottomAnchor,
+			trailing: titleContainer.trailingAnchor,
+			padding: .init(top: 0, left: 5, bottom: 5, right: 5),
+			size: .init(width: titleContainer.frame.width, height: titleContainer.frame.height / 2)
 		)
 	}
 }

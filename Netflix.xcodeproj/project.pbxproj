@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4D5BA592295333AB0081A124 /* Circle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D5BA591295333AB0081A124 /* Circle.swift */; };
 		4D6F2FE52951F148007EBDD1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D6F2FE42951F148007EBDD1 /* AppDelegate.swift */; };
 		4D6F2FE72951F148007EBDD1 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D6F2FE62951F148007EBDD1 /* SceneDelegate.swift */; };
 		4D6F2FE92951F148007EBDD1 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D6F2FE82951F148007EBDD1 /* ViewController.swift */; };
@@ -21,6 +22,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		4D5BA591295333AB0081A124 /* Circle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Circle.swift; sourceTree = "<group>"; };
 		4D6F2FE12951F148007EBDD1 /* Netflix.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Netflix.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4D6F2FE42951F148007EBDD1 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		4D6F2FE62951F148007EBDD1 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -92,6 +94,7 @@
 				4DEDB9BE2951F4E500DB93D4 /* Storyboard */,
 				4DEDB9C02951F51E00DB93D4 /* Controller */,
 				4DF49EE72952014B009190DD /* MovieCollectionViewCell.swift */,
+				4D5BA591295333AB0081A124 /* Circle.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -219,6 +222,7 @@
 			files = (
 				4D6F2FE92951F148007EBDD1 /* ViewController.swift in Sources */,
 				4DF49EE5295200BB009190DD /* UIView+Extension.swift in Sources */,
+				4D5BA592295333AB0081A124 /* Circle.swift in Sources */,
 				4DF49EE82952014B009190DD /* MovieCollectionViewCell.swift in Sources */,
 				4D6F2FE52951F148007EBDD1 /* AppDelegate.swift in Sources */,
 				4D6F2FFC2951F27E007EBDD1 /* Movie.swift in Sources */,
