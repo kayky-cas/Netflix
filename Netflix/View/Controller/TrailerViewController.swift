@@ -6,21 +6,34 @@
 //
 
 import UIKit
+import WebKit
 
-class TrailerViewController: UIViewController {
-	private let topCircle = {
-		let circle = Circle()
-		return circle
+class TrailerViewController: UIViewController, WKNavigationDelegate {
+	private var movie: Movie? {
+		didSet {
+			nameLabel.text = "TRAILER:\n\t" + movie!.title
+			
+			let url = URL(string: "https://www.youtube.com/embed/\(movie!.trailerUrl!)?autoplay=1")!
+			webView.load(URLRequest(url: url))
+		}
+	}
+	
+	private lazy var topCircle = Circle()
+	private lazy var bottomCircle = Circle()
+	
+	private lazy var nameLabel = {
+		let label = UILabel()
+		label.font = UIFont.boldSystemFont(ofSize: 20)
+		label.textColor = .white
+		label.numberOfLines = 0
+		return label
 	}()
 	
-	private let bottomCircle = {
-		let circle = Circle()
-		return circle
-	}()
-	
+	private lazy var webView = WKWebView()
 	
 	override func viewDidLoad() {
 		super.viewDidLoad()
+
 		setup()
 	}
 	
@@ -30,7 +43,14 @@ class TrailerViewController: UIViewController {
 	}
 	
 	func setup() {
-		view.addSubviews(topCircle, bottomCircle)
+		webView.navigationDelegate = self
+		
+		webView.allowsBackForwardNavigationGestures = false
+		
+		webView.layer.cornerRadius = 20
+		webView.layer.masksToBounds = true
+		
+		view.addSubviews(topCircle, bottomCircle, webView, nameLabel)
 		
 		view.backgroundColor = .black
 	}
@@ -53,6 +73,29 @@ class TrailerViewController: UIViewController {
 			padding: .init(top: 0, left: 0, bottom: -300, right: -250),
 			size: .init(width: 500, height: 500)
 		)
+		
+		webView.anchor(
+			top: view.safeAreaLayoutGuide.topAnchor,
+			leading: nil,
+			bottom: nil,
+			trailing: nil,
+			size: .init(width: view.frame.width - 20, height: 300)
+		)
+		
+		webView.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
+		
+//		nameLabel.anchor(
+//			top: webView.bottomAnchor,
+//			leading: nil,
+//			bottom: nil,
+//			trailing: nil,
+//			size: .init(width: view.frame.width - 20, height: 300)
+//		)
+
+	}
+	
+	func setMovie(movie: inout Movie) {
+		self.movie = movie
 	}
 
 }

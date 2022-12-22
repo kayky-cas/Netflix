@@ -23,10 +23,25 @@ class MovieRepositoryMock {
 		"https://www.elhombre.com.br/wp-content/uploads/2021/06/forrest-gump-1.jpg"
 	]
 	
+	private let trailers = [
+		"v1nZq1vfgSw",
+		"y_-YWEot_7w",
+		"FLbWXkka9wU",
+		"a-PVBsmiB0Y",
+		"-_dXC-Zg8Fg",
+		"GAf0nGq_FXQ",
+		"tGpTpVyI_OQ",
+		"LiKeQrChkTY",
+		"lIVDryQDUS8",
+		"Fs0-4NLSO2Y",
+		"0i86oM1nHjM",
+		"p7WvuSa7w9o"
+	]
+	
 	func populate(completion: @escaping ([Movie]) -> ()) {
 		let titles = [
 			"Um sonho de Liberdade",
-			"O Poderoso Chefão ",
+			"O Poderoso Chefão",
 			"O Poderoso Chefão II",
 			"Batman - O Cavaleiro das Trevas",
 			"12 Homens e uma Sentença",
@@ -62,9 +77,16 @@ class MovieRepositoryMock {
 			imageUrl = images[index]
 		}
 		
+		var trailerUrl: String? = nil
+		
+		
+		if index < trailers.count {
+			trailerUrl = trailers[index]
+		}
+		
 		let description = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur tincidunt dui elit, a consectetur massa lacinia eget. Nullam leo nisl, ullamcorper eget consectetur quis, semper vitae eros. Etiam porta imperdiet ante, id auctor ex hendrerit vitae. Phasellus aliquet dapibus interdum. Aenean quis laoreet libero, convallis sollicitudin mi. Cras condimentum odio et quam porta imperdiet. Curabitur commodo quam id vulputate aliquet. Etiam et tortor a sem placerat congue non in ligula."
 		
-		return Movie(title: title, description: description, duration: TimeInterval(Int.random(in: HOUR..<HOUR * 4)), exhibitions: UInt.random(in: 1000..<1000000), imageUrl: imageUrl)
+		return Movie(title: title, description: description, duration: TimeInterval(Int.random(in: HOUR..<HOUR * 4)), exhibitions: UInt.random(in: 1000..<1000000), imageUrl: imageUrl, trailerUrl: trailerUrl)
 	}
 }
 

@@ -93,6 +93,7 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
 		
 		var movie = viewModel.getMovies()[indexPath.item]
 		
+		
 		cell.setMovie(movie: &movie)
 		
 		cell.getMovie = { movie in
@@ -100,6 +101,7 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
 			movieViewController.setMovie(movie: &movie)
 			movieViewController.navigateToTrailer = { movie in
 				let trailerViewController = TrailerViewController()
+				trailerViewController.setMovie(movie: &movie)
 				self.navigationController?.pushViewController(trailerViewController, animated: true)
 			}
 			self.present(movieViewController, animated: true)
