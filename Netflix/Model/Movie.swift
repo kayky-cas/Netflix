@@ -16,6 +16,8 @@ struct Movie {
 	var imageUrl: String?
 	var trailerUrl: String?
 	
+	var actors: [Actor]
+	
 	init(title: String, description: String? = nil, duration: TimeInterval, exhibitions: UInt, imageUrl: String? = nil, trailerUrl: String? = nil) {
 		id = .init()
 		
@@ -25,5 +27,7 @@ struct Movie {
 		self.exhibitions = exhibitions
 		self.imageUrl = imageUrl
 		self.trailerUrl = trailerUrl
+		
+		actors = []
 	}
 }

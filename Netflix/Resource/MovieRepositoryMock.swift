@@ -23,6 +23,34 @@ class MovieRepositoryMock {
 		"https://www.elhombre.com.br/wp-content/uploads/2021/06/forrest-gump-1.jpg"
 	]
 	
+	private let firstNames = [
+		"Kayky",
+		"Maria",
+		"Mariana",
+		"Lucas",
+		"Liliane",
+		"Bruno",
+		"Geovani",
+		"Kaue",
+		"Marcelo",
+		"Ricardo",
+		"Pablo",
+		"Diego",
+		"Gabrielle"
+	]
+	
+	private let lastNames = [
+		"Almeida",
+		"Alves",
+		"Andrade",
+		"Barbosa",
+		"Rocha",
+		"Silva",
+		"Pericles",
+		"Pedroso",
+		"Souza",
+	]
+	
 	private let trailers = [
 		"v1nZq1vfgSw",
 		"y_-YWEot_7w",
@@ -86,7 +114,18 @@ class MovieRepositoryMock {
 		
 		let description = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur tincidunt dui elit, a consectetur massa lacinia eget. Nullam leo nisl, ullamcorper eget consectetur quis, semper vitae eros. Etiam porta imperdiet ante, id auctor ex hendrerit vitae. Phasellus aliquet dapibus interdum. Aenean quis laoreet libero, convallis sollicitudin mi. Cras condimentum odio et quam porta imperdiet. Curabitur commodo quam id vulputate aliquet. Etiam et tortor a sem placerat congue non in ligula."
 		
-		return Movie(title: title, description: description, duration: TimeInterval(Int.random(in: HOUR..<HOUR * 4)), exhibitions: UInt.random(in: 1000..<1000000), imageUrl: imageUrl, trailerUrl: trailerUrl)
+		var movie = Movie(title: title, description: description, duration: TimeInterval(Int.random(in: HOUR..<HOUR * 4)), exhibitions: UInt.random(in: 1000..<1000000), imageUrl: imageUrl, trailerUrl: trailerUrl)
+		
+		let actors = UInt.random(in: 3..<10)
+		
+		for _ in 0..<actors {
+			let firstName = firstNames[Int.random(in: 0...firstNames.count - 1)]
+			let lastName = lastNames[Int.random(in: 0...lastNames.count - 1)]
+			
+			movie.actors.append(Actor(name: firstName + " " + lastName))
+		}
+		
+		return movie
 	}
 }
 
