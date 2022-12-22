@@ -13,6 +13,9 @@
 		4D6F2FEE2951F149007EBDD1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4D6F2FED2951F149007EBDD1 /* Assets.xcassets */; };
 		4D6F2FF12951F149007EBDD1 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4D6F2FEF2951F149007EBDD1 /* LaunchScreen.storyboard */; };
 		4D6F2FFC2951F27E007EBDD1 /* Movie.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D6F2FFB2951F27E007EBDD1 /* Movie.swift */; };
+		4D9A8FEA29547B2A00E15E08 /* UIImageView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D9A8FE929547B2A00E15E08 /* UIImageView+Extension.swift */; };
+		4D9A8FEC2954814A00E15E08 /* MovieViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D9A8FEB2954814A00E15E08 /* MovieViewController.swift */; };
+		4D9A8FEE29549EB500E15E08 /* TrailerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D9A8FED29549EB500E15E08 /* TrailerViewController.swift */; };
 		4DEDB9C32951F5C700DB93D4 /* MovieRepositoryMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DEDB9C22951F5C700DB93D4 /* MovieRepositoryMock.swift */; };
 		4DEDB9C52951FA7000DB93D4 /* MovieViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DEDB9C42951FA7000DB93D4 /* MovieViewModel.swift */; };
 		4DF49EE5295200BB009190DD /* UIView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DF49EE4295200BB009190DD /* UIView+Extension.swift */; };
@@ -28,6 +31,9 @@
 		4D6F2FF02951F149007EBDD1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		4D6F2FF22951F149007EBDD1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4D6F2FFB2951F27E007EBDD1 /* Movie.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Movie.swift; sourceTree = "<group>"; };
+		4D9A8FE929547B2A00E15E08 /* UIImageView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImageView+Extension.swift"; sourceTree = "<group>"; };
+		4D9A8FEB2954814A00E15E08 /* MovieViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieViewController.swift; sourceTree = "<group>"; };
+		4D9A8FED29549EB500E15E08 /* TrailerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrailerViewController.swift; sourceTree = "<group>"; };
 		4DEDB9C22951F5C700DB93D4 /* MovieRepositoryMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieRepositoryMock.swift; sourceTree = "<group>"; };
 		4DEDB9C42951FA7000DB93D4 /* MovieViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieViewModel.swift; sourceTree = "<group>"; };
 		4DF49EE4295200BB009190DD /* UIView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Extension.swift"; sourceTree = "<group>"; };
@@ -123,6 +129,8 @@
 			isa = PBXGroup;
 			children = (
 				4D6F2FE82951F148007EBDD1 /* ViewController.swift */,
+				4D9A8FEB2954814A00E15E08 /* MovieViewController.swift */,
+				4D9A8FED29549EB500E15E08 /* TrailerViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -139,6 +147,7 @@
 			isa = PBXGroup;
 			children = (
 				4DF49EE4295200BB009190DD /* UIView+Extension.swift */,
+				4D9A8FE929547B2A00E15E08 /* UIImageView+Extension.swift */,
 			);
 			path = Util;
 			sourceTree = "<group>";
@@ -214,8 +223,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				4D6F2FE92951F148007EBDD1 /* ViewController.swift in Sources */,
+				4D9A8FEC2954814A00E15E08 /* MovieViewController.swift in Sources */,
 				4DF49EE5295200BB009190DD /* UIView+Extension.swift in Sources */,
+				4D9A8FEE29549EB500E15E08 /* TrailerViewController.swift in Sources */,
 				4D5BA592295333AB0081A124 /* Circle.swift in Sources */,
+				4D9A8FEA29547B2A00E15E08 /* UIImageView+Extension.swift in Sources */,
 				4DF49EE82952014B009190DD /* MovieCollectionViewCell.swift in Sources */,
 				4D6F2FE52951F148007EBDD1 /* AppDelegate.swift in Sources */,
 				4D6F2FFC2951F27E007EBDD1 /* Movie.swift in Sources */,

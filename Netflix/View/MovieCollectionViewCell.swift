@@ -10,7 +10,9 @@ import UIKit
 class MovieCollectionViewCell: UICollectionViewCell {
 	static let identifier = "MovieCollectionViewCell"
 	
-	var movie: Movie? {
+	var getMovie: ((inout Movie) -> Void)?
+	
+	private var movie: Movie? {
 		didSet {
 			title.text = movie?.title
 			duration.text = "\(Int(movie!.duration / 60)) min"
@@ -21,15 +23,20 @@ class MovieCollectionViewCell: UICollectionViewCell {
 		}
 	}
 	
+	lazy var tapLayer = {
+		let view = UIView()
+		let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(self.touchUpInside))
+		view.isUserInteractionEnabled = true
+		view.addGestureRecognizer(tapGestureRecognizer)
+		return view
+	}()
+	
 	lazy var image = {
 		let image = UIImageView()
-		// TODO
-		// - get a nil image
-		// - async image load
-		// - create an Custom image view??????
 		image.image = UIImage(named: "nil-image")
 		image.contentMode = .scaleAspectFill
-//		image.clipsToBounds = true
+		image.clipsToBounds = true
+
 		return image
 	}()
 	
@@ -61,7 +68,6 @@ class MovieCollectionViewCell: UICollectionViewCell {
 	lazy var title = {
 		let label = UILabel()
 		// TODO (TITLE) <- center -> (DURATION) min
-		label.text = "Jorge"
 		label.numberOfLines = 2
 		label.textColor = .white
 		label.font = UIFont.boldSystemFont(ofSize: 18)
@@ -91,15 +97,17 @@ class MovieCollectionViewCell: UICollectionViewCell {
 	}
 	
 	func setup() {
-		contentView.addSubviews(image, titleContainer, title, duration)
+		contentView.addSubviews(image, titleContainer, title, duration, tapLayer)
 	}
 	
 	func setupCell() {
 		contentView.backgroundColor = .gray
 		contentView.layer.cornerRadius = 10
 		contentView.layer.masksToBounds = true
-		contentView.layer.borderWidth = 2
+		contentView.layer.borderWidth = 2.5
 		contentView.layer.borderColor = UIColor.systemPink.cgColor
+		
+		tapLayer.frame = contentView.bounds
 	}
 	
 	func setupConstraints() {
@@ -125,7 +133,7 @@ class MovieCollectionViewCell: UICollectionViewCell {
 			leading: contentView.leadingAnchor,
 			bottom: contentView.bottomAnchor,
 			trailing: contentView.trailingAnchor,
-			size: .init(width: contentView.frame.width, height: 50)
+			size: .init(width: contentView.frame.width, height: 58        )
 		)
 		
 		title.anchor(
@@ -133,22 +141,16 @@ class MovieCollectionViewCell: UICollectionViewCell {
 			leading: titleContainer.leadingAnchor,
 			bottom: titleContainer.bottomAnchor,
 			trailing: titleContainer.trailingAnchor,
-			padding: .init(top: 0, left: 5, bottom: 5, right: 5),
+			padding: .init(top: 0, left: 8, bottom: 8, right: 8),
 			size: .init(width: titleContainer.frame.width, height: titleContainer.frame.height / 2)
 		)
 	}
-}
-
-extension UIImageView {
-	func load(url: URL) {
-		DispatchQueue.global().async { [weak self] in
-			if let data = try? Data(contentsOf: url) {
-				if let image = UIImage(data: data) {
-					DispatchQueue.main.async {
-						self?.image = image
-					}
-				}
-			}
-		}
+	
+	func setMovie(movie: inout Movie) {
+		self.movie = movie
+	}
+	
+	@objc func touchUpInside() {
+		getMovie!(&movie!)
 	}
 }
