@@ -24,6 +24,7 @@ class MovieViewController: UIViewController {
 	}
 	
 	private lazy var circle = Circle()
+	
 	private lazy var line = {
 		let view = UIView()
 		view.backgroundColor = .systemPink
@@ -123,7 +124,19 @@ class MovieViewController: UIViewController {
 	}
 	
 	func setup() {
-		view.addSubviews(container, circle, image, duration, line, titleContainer, titleLabel, descriptionContainer, descriptionTextView, ratingButton)
+		view.addSubviews(
+			container,
+			circle,
+			image,
+			duration,
+			line,
+			titleContainer,
+			titleLabel,
+			descriptionContainer,
+			descriptionTextView,
+			ratingButton
+		)
+		
 		container.frame = view.bounds
 	}
 	

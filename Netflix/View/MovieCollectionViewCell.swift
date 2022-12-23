@@ -18,12 +18,12 @@ class MovieCollectionViewCell: UICollectionViewCell {
 			duration.text = "\(Int(movie!.duration / 60)) min"
 			
 			if let imageUrl = movie!.imageUrl {
-				image.load(url: URL(string: imageUrl)!)
+				image.loadAndScale(url: URL(string: imageUrl)!)
 			}
 		}
 	}
 	
-	lazy var tapLayer = {
+	private lazy var tapLayer = {
 		let view = UIView()
 		let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(self.touchUpInside))
 		view.isUserInteractionEnabled = true
@@ -31,17 +31,19 @@ class MovieCollectionViewCell: UICollectionViewCell {
 		return view
 	}()
 	
-	lazy var image = {
+	private lazy var image = {
 		let image = UIImageView()
-		image.image = UIImage(named: "nil-image")
-		image.contentMode = .scaleAspectFill
+		image.image = UIImage(systemName: "questionmark.video.fill")
+		image.contentMode = .scaleAspectFit
 		image.clipsToBounds = true
+		image.tintColor = .systemPink
 
 		return image
 	}()
 	
-	lazy var titleContainer = {
+	private lazy var titleContainer = {
 		let view = UIVisualEffectView(effect: nil)
+		
 		view.translatesAutoresizingMaskIntoConstraints = false
 		view.effect = UIBlurEffect(style: .systemThinMaterialDark)
 		view.backgroundColor = .clear
@@ -49,8 +51,9 @@ class MovieCollectionViewCell: UICollectionViewCell {
 		return view
 	}()
 	
-	lazy var duration = {
+	private lazy var duration = {
 		let label = UILabel()
+		
 		label.textAlignment = .center
 		label.textColor = .white
 		label.font = UIFont.italicSystemFont(ofSize: 18)
@@ -62,17 +65,19 @@ class MovieCollectionViewCell: UICollectionViewCell {
 		label.layer.shadowColor = UIColor.black.cgColor
 		label.layer.shadowOffset = .init(width: 2, height: 2)
 		label.layer.shadowOpacity = 1
+		
 		return label
 	}()
 	
-	lazy var title = {
+	private lazy var title = {
 		let label = UILabel()
-		// TODO (TITLE) <- center -> (DURATION) min
+		
 		label.numberOfLines = 2
 		label.textColor = .white
 		label.font = UIFont.boldSystemFont(ofSize: 18)
 		label.shadowColor = .init(_colorLiteralRed: 0, green: 0, blue: 0, alpha: 0.8)
 		label.shadowOffset = .init(width: -1, height: 1)
+		
 		return label
 	}()
 	
@@ -96,21 +101,21 @@ class MovieCollectionViewCell: UICollectionViewCell {
 		super.prepareForReuse()
 	}
 	
-	func setup() {
+	private func setup() {
 		contentView.addSubviews(image, titleContainer, title, duration, tapLayer)
 	}
 	
-	func setupCell() {
-		contentView.backgroundColor = .gray
+	private func setupCell() {
+		contentView.backgroundColor = .black
 		contentView.layer.cornerRadius = 10
 		contentView.layer.masksToBounds = true
 		contentView.layer.borderWidth = 2.5
 		contentView.layer.borderColor = UIColor.systemPink.cgColor
-		
-		tapLayer.frame = contentView.bounds
 	}
 	
-	func setupConstraints() {
+	private func setupConstraints() {
+		tapLayer.frame = contentView.bounds
+		
 		image.anchor(
 			top: contentView.topAnchor,
 			leading: contentView.leadingAnchor,
@@ -133,7 +138,7 @@ class MovieCollectionViewCell: UICollectionViewCell {
 			leading: contentView.leadingAnchor,
 			bottom: contentView.bottomAnchor,
 			trailing: contentView.trailingAnchor,
-			size: .init(width: contentView.frame.width, height: 58        )
+			size: .init(width: contentView.frame.width, height: 58)
 		)
 		
 		title.anchor(

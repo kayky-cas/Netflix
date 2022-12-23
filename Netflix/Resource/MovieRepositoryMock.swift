@@ -105,16 +105,16 @@ class MovieRepositoryMock {
 			imageUrl = images[index]
 		}
 		
-		var trailerUrl: String? = nil
+		var trailerYoutubeId: String? = nil
 		
 		
 		if index < trailers.count {
-			trailerUrl = trailers[index]
+			trailerYoutubeId = trailers[index]
 		}
 		
 		let description = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur tincidunt dui elit, a consectetur massa lacinia eget. Nullam leo nisl, ullamcorper eget consectetur quis, semper vitae eros. Etiam porta imperdiet ante, id auctor ex hendrerit vitae. Phasellus aliquet dapibus interdum. Aenean quis laoreet libero, convallis sollicitudin mi. Cras condimentum odio et quam porta imperdiet. Curabitur commodo quam id vulputate aliquet. Etiam et tortor a sem placerat congue non in ligula."
 		
-		var movie = Movie(title: title, description: description, duration: TimeInterval(Int.random(in: HOUR..<HOUR * 4)), exhibitions: UInt.random(in: 1000..<1000000), imageUrl: imageUrl, trailerUrl: trailerUrl)
+		var movie = Movie(title: title, description: description, duration: TimeInterval(Int.random(in: HOUR..<HOUR * 4)), exhibitions: UInt.random(in: 1000..<1000000), imageUrl: imageUrl, trailerYoutubeId: trailerYoutubeId)
 		
 		let actors = UInt.random(in: 3..<10)
 		

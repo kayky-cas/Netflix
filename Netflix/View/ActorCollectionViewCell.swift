@@ -16,7 +16,7 @@ class ActorCollectionViewCell: UICollectionViewCell {
 		}
 	}
 	
-	lazy var container = {
+	private lazy var container = {
 		let view = UIVisualEffectView(effect: nil)
 		view.translatesAutoresizingMaskIntoConstraints = false
 		view.effect = UIBlurEffect(style: .systemThinMaterialDark)
@@ -59,17 +59,16 @@ class ActorCollectionViewCell: UICollectionViewCell {
 		super.prepareForReuse()
 	}
 	
-	func setup() {
+	private func setup() {
 		contentView.addSubviews(container, actorImage, actorLabel)
 		container.frame = contentView.bounds
 	}
 	
-	func setupCell() {
+	private func setupCell() {
 		contentView.layer.borderColor = UIColor.systemPink.cgColor
 		contentView.layer.borderWidth = 2
-		contentView.layer.cornerRadius = 15
+		contentView.layer.cornerRadius = 10
 		contentView.layer.masksToBounds = true
-//		contentView.layer.backgroundColor = .init(red: 0, green: 0, blue: 0, alpha: 0.8)
 	}
 	
 	func setupConstraints() {

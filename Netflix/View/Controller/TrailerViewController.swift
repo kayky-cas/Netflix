@@ -11,10 +11,7 @@ import WebKit
 class TrailerViewController: UIViewController, WKNavigationDelegate, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
 	private var movie: Movie? {
 		didSet {
-			nameLabel.text = "TRAILER:\n\t" + movie!.title
-			
-			let url = URL(string: "https://www.youtube.com/embed/\(movie!.trailerUrl!)?autoplay=1")!
-			webView.load(URLRequest(url: url))
+			updateUI()
 		}
 	}
 	
@@ -23,16 +20,20 @@ class TrailerViewController: UIViewController, WKNavigationDelegate, UICollectio
 	
 	private lazy var nameLabel = {
 		let label = UILabel()
+		
 		label.font = UIFont.boldSystemFont(ofSize: 20)
 		label.textColor = .white
 		label.numberOfLines = 0
+		
 		return label
 	}()
 	
 	private lazy var actorsLabel = {
 		let label = UILabel()
+		
 		label.text = "Actors:"
 		label.font = .boldSystemFont(ofSize: 20)
+		
 		return label
 	}()
 	
@@ -40,12 +41,9 @@ class TrailerViewController: UIViewController, WKNavigationDelegate, UICollectio
 		let webView = WKWebView()
 		
 		webView.navigationDelegate = self
-		
 		webView.allowsBackForwardNavigationGestures = false
-		
 		webView.layer.cornerRadius = 20
 		webView.layer.masksToBounds = true
-		
 		webView.layer.borderColor = UIColor.systemPink.cgColor
 		webView.layer.borderWidth = 2
 		
@@ -82,13 +80,13 @@ class TrailerViewController: UIViewController, WKNavigationDelegate, UICollectio
 		setupConstraints()
 	}
 	
-	func setup() {
+	private func setup() {
 		view.addSubviews(topCircle, bottomCircle, webView, nameLabel, actorsLabel, collectionView)
 		
 		view.backgroundColor = .black
 	}
 		
-	func setupConstraints() {
+	private func setupConstraints() {
 		topCircle.anchor(
 			top: view.topAnchor,
 			leading: view.leadingAnchor,
@@ -117,14 +115,6 @@ class TrailerViewController: UIViewController, WKNavigationDelegate, UICollectio
 		
 		webView.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
 		
-//		nameLabel.anchor(
-//			top: webView.bottomAnchor,
-//			leading: nil,
-//			bottom: nil,
-//			trailing: nil,
-//			size: .init(width: view.frame.width - 20, height: 300)
-//		)
-		
 		actorsLabel.anchor(
 			top: webView.bottomAnchor,
 			leading: view.leadingAnchor,
@@ -144,12 +134,17 @@ class TrailerViewController: UIViewController, WKNavigationDelegate, UICollectio
 		)
 		
 		collectionView.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
-
-
 	}
 	
 	func setMovie(movie: inout Movie) {
 		self.movie = movie
+	}
+	
+	private func updateUI() {
+		nameLabel.text = "TRAILER:\n\t" + movie!.title
+		
+		let url = URL(string: "https://www.youtube.com/embed/\(movie!.trailerYoutubeId!)?autoplay=1")!
+		webView.load(URLRequest(url: url))
 	}
 	
 	func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
